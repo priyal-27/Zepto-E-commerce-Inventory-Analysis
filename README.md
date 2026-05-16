@@ -1,4 +1,4 @@
-# 🛒 Zepto E-commerce Inventory Analysis | PostgreSQL SQL Project
+# 🛒 Zepto E-commerce Inventory Analysis | PostgreSQL Project
 
 ## 📌 Project Overview
 This project is an end-to-end SQL Data Analysis project built using PostgreSQL on a real-world e-commerce inventory dataset inspired by Zepto, one of India’s fastest-growing quick-commerce platforms.
@@ -65,62 +65,87 @@ CREATE TABLE zepto (
     quantity INTEGER
 );
 ```
-🔍 Data Exploration
+
+---
+
+# 🔍 Data Exploration
 
 Performed exploratory data analysis to understand the dataset structure and identify inconsistencies.
 
-Exploration Tasks
-Counted total records
-Viewed sample records
-Checked for null values
-Identified unique product categories
-Compared in-stock vs out-of-stock products
-Identified duplicate product names across SKUs
-🧹 Data Cleaning
+## Exploration Tasks
+- Counted total records
+- Viewed sample records
+- Checked for null values
+- Identified unique product categories
+- Compared in-stock vs out-of-stock products
+- Identified duplicate product names across SKUs
+
+---
+
+# 🧹 Data Cleaning
 
 Performed data cleaning and transformation to improve data quality.
 
-Cleaning Steps
-Removed rows with zero MRP
-Converted prices from paise to rupees
+## Cleaning Steps
+- Removed rows with zero MRP
+- Converted prices from paise to rupees
+
+```sql
 DELETE FROM zepto
 WHERE mrp = 0;
 
 UPDATE zepto
 SET mrp = mrp / 100.0,
     discountedSellingPrice = discountedSellingPrice / 100.0;
-📊 Business Analysis
+```
+
+---
+
+# 📊 Business Analysis
 
 Performed SQL-based business analysis to generate actionable insights.
 
-Business Questions Solved
-Top 10 products with highest discounts
-High MRP products currently out of stock
-Estimated revenue by category
-Expensive products with low discounts
-Categories offering highest average discounts
-Best value products using price-per-gram analysis
-Product segmentation by weight category
-Total inventory weight by category
-📈 Sample Query
+## Business Questions Solved
+- Top 10 products with highest discounts
+- High MRP products currently out of stock
+- Estimated revenue by category
+- Expensive products with low discounts
+- Categories offering highest average discounts
+- Best value products using price-per-gram analysis
+- Product segmentation by weight category
+- Total inventory weight by category
+
+---
+
+# 📈 Sample Query
+
+```sql
 SELECT category,
 SUM(discountedSellingPrice * availableQuantity) AS total_revenue
 FROM zepto
 GROUP BY category
 ORDER BY total_revenue DESC;
-🚀 Key Insights
-Some categories provide significantly higher discounts than others
-Premium products frequently face stock shortages
-Inventory value differs greatly across product categories
-Price-per-gram analysis helps identify value-for-money products
-Bulk inventory contributes the highest overall stock weight
-💡 Skills Demonstrated
-SQL Querying
-PostgreSQL
-Data Cleaning
-Exploratory Data Analysis (EDA)
-Business KPI Analysis
-Aggregate Functions
-CASE Statements
-Retail & Inventory Analytics
+```
 
+---
+
+# 🚀 Key Insights
+
+- Some categories provide significantly higher discounts than others
+- Premium products frequently face stock shortages
+- Inventory value differs greatly across product categories
+- Price-per-gram analysis helps identify value-for-money products
+- Bulk inventory contributes the highest overall stock weight
+
+---
+
+# 💡 Skills Demonstrated
+
+- SQL Querying
+- PostgreSQL
+- Data Cleaning
+- Exploratory Data Analysis (EDA)
+- Business KPI Analysis
+- Aggregate Functions
+- CASE Statements
+- Retail & Inventory Analytics
